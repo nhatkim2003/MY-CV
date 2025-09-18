@@ -1,0 +1,100 @@
+﻿@page "/projects"
+
+<PageTitle>My Projects</PageTitle>
+
+<section class="projects">
+    <div class="container">
+        <!-- Heading -->
+        <div class="projects__heading">
+            <h2><span class="light">MY</span> <span class="accent">PROJECTS</span></h2>
+        </div>
+
+        <!-- Grid -->
+        <div class="pgrid">
+            @foreach (var p in projects)
+            {
+                <article class="pcard">
+                    <div class="pcard__body">
+                        <img src="@p.Image" alt="@p.Title" loading="lazy" />
+                        <div class="overlay">
+                            <h3>@p.Title</h3>
+                        </div>
+                    </div>
+                </article>
+                <section class="detail">
+                    <h3>@p.Title</h3>
+                    <div class="description">
+                        <span>@p.Description</span>
+
+                    </div>
+                    <dl class="detail__list">
+                        <dt>Created</dt>
+                        <dd>@p.Created</dd>
+                        <dt>Role</dt>
+                        <dd>@p.Role</dd>
+                        <dt>Frontend</dt>
+                        <dd>@p.Frontend</dd>
+                        <dt>Backend</dt>
+                        <dd>@p.Backend</dd>
+                        <dt>Source</dt>
+                        <dd><a href=@p.CodeUrl target="_blank" rel="noopener">@p.Title</a></dd>
+                        <dt>Demo</dt>
+                        <dd><a href=@p.DemoUrl target="_blank" rel="noopener">@p.Title</a></dd>
+                    </dl>
+                </section>
+            }
+        </div>
+
+        <div class="projects__footer">
+            <h2><span class="light">Thank you for reading to the end.</span></h2>
+        </div>
+
+    </div>
+</section>
+
+@code {
+
+    record Project(
+      string Title,
+      string Image,
+      string Description,
+      string Created,
+      string Role,
+      string Frontend,
+      string Backend,
+      string? CodeUrl = null,
+      string? DemoUrl = null
+    );
+
+    List<Project> projects = new()
+  {
+    new("My Portfolio", "images/projects/portfolio.png",
+    "This is a single-page portfolio built with Blazor WebAssembly (.NET 8). It's my personal website to introduce myself, my skills, and the projects I have worked on.",
+    "08/2025",
+    "Principal developer",
+    "Blazor WebAssembly, CSS",
+    "None",
+    "https://github.com/LongBOTT/MyPortfolio"),
+    new("ERP Software", "images/projects/erp.png",
+    "This is a full-stack ERP software built with DevExpress XAF (eXpressApp Framework) on .NET, using Entity Framework Core and a Blazor Server frontend. The system provides secure authentication, role-based access, and a modular architecture for managing products, categories, customers, suppliers, inventory, sales, purchases, and financial transactions. It supports advanced business logic, customizable UI, and detailed reporting, making it suitable for small to medium-sized retail or wholesale businesses.",
+    "08/2025",
+    "Principal developer",
+    "ASP.NET Core Blazor Server, DevExpress XAF",
+    ".NET 8, Entity Framework Core, DevExpress XAF, PostgreSQL",
+    "https://github.com/LongBOTT/ERPNguyenHuy"),
+    new("E-Commerce Store", "images/projects/technicStore.png",
+    "This is a full-stack e-commerce platform featuring a Spring Boot backend and a ReactJS frontend. The project provides secure authentication using JWT, supports user roles and permissions, and offers comprehensive management for products, orders, customers, suppliers, inventory, and warranty. The system includes advanced reporting and analytics, and leverages modern UI libraries for an optimized user experience.",
+    "09/2024",
+    "Principal developer",
+    "ReactJS, TypeScript, Vite, Tailwind CSS, MUI Material, Ant Design",
+    "Spring Boot, Spring Security, JWT, JPA/Hibernate, MySQL",
+    "https://github.com/LongBOTT/E-Commerce-Store"),
+    new("End-to-end Encrypted Messaging App", "images/projects/cryptTalk.png",
+    "This is a secure real-time chat application featuring a Spring Boot backend and a Java Swing desktop frontend. The project supports encrypted messaging using RSA and AES algorithms, user authentication, and management of conversations and contacts. It provides a modern, responsive UI with custom themes, supports file transfer, and includes features such as password recovery via email OTP and audio call functionality. The system uses MySQL for persistent storage and leverages advanced UI libraries for a smooth user experience.",
+    "11/2024",
+    "Principal developer",
+    "Java Swing, FlatLaf, MigLayout, custom SVG icons, JavaFX (for some UI components)",
+    "Spring Boot, Spring Data JPA, MySQL, JPA/Hibernate, Jakarta Mail, BCrypt for password hashing, custom RSA/AES encryption modules",
+    "https://github.com/LongBOTT/CryptTalk_Application"),
+  };
+}

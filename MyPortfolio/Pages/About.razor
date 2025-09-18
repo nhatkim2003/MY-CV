@@ -1,0 +1,166 @@
+﻿@page "/about"
+
+<PageTitle>About</PageTitle>
+
+<section class="about">
+  <div class="container">
+
+    <div class="about__heading">
+      <h2>ABOUT <span class="accent">ME</span></h2>
+    </div>
+
+    <div class="about__grid">
+      <div class="about__left card">
+        <h3>Personal Information</h3>
+
+        <div class="info-grid">
+          <dl>
+            <dt>First Name:<dd>Long</dd></dt>
+            <dt>Birthday:</dt><dd>08/30/2003</dd>
+            <dt>Nationality:</dt><dd>Vietnamese</dd>
+            <dt>Phone:</dt><dd><a href="tel:0963333946">0963 333 946</a></dd>
+            <dt>Languages:</dt><dd>Vietnamese, English</dd>
+          </dl>
+          <dl>
+            <dt>Last Name:</dt><dd>Nguyen Hoang</dd>
+            <dt>Address:</dt><dd>Ho Chi Minh City, Vietnam</dd>
+            <dt>LinkedIn:</dt><dd><a href="https://linkedin.com/in/longhoangng2003" target="_blank" rel="noopener">linkedin/longhoangng2003</a></dd>
+            <dt>GitHub:</dt><dd><a href="https://github.com/LongBOTT" target="_blank" rel="noopener">github/LongBOTT</a></dd>
+            <dt>Email:</dt><dd><a href="mailto:longhoangng2003@gmail.com">longhoangng2003@gmail.com</a></dd>
+          </dl>
+        </div>
+
+        <div class="about__actions">
+          <a class="cta" href="files/CV_SoftwareDeveloper_LongNguyenHoang.pdf" download>
+            <span class="cta__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h12m0 0-4-4m4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>DOWNLOAD CV</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="about__right">
+        <div class="stat">
+          <div class="stat__num">5<span>+</span></div>
+          <div class="stat__label"><span></span>PERSONAL<br/>PROJECTS</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat__num">~1</div>
+          <div class="stat__label"><span></span>YEARS OF<br/>EXPERIENCE</div>
+        </div>
+      </div>
+
+      @* <div class="about__right"> *@
+      @*     <div class="stat"> *@
+      @*         <div class="stat__num">5<span>+</span></div> *@
+      @*         <div class="stat__label"><span></span>PERSONAL<br />PROJECTS</div> *@
+      @*     </div> *@
+
+      @*     <div class="stat"> *@
+      @*         <div class="stat__num">~1</div> *@
+      @*         <div class="stat__label"><span></span>YEARS OF<br />EXPERIENCE</div> *@
+      @*     </div> *@
+      @* </div> *@
+    </div>
+
+  <hr class="split" />
+
+  <!-- Timeline -->
+  <h3 class="section-title">EDUCATION &amp; EXPERIENCE</h3>
+  <div class="about__timeline">
+      <ul class="timeline">
+          <li>
+              <span class="dot"></span>
+              <div class="tl-body">
+                    <div class="tl-meta"><span class="pill">October 2021 – June 2025</span></div>
+                    <div class="tl-title"><strong>Saigon University</strong>, Bachelor of Engineering in Information Technology</div>
+                    <div class="tl-desc">Graduated - GPA: 3.66/4.0</div>
+              </div>
+          </li>
+      </ul>
+
+      <ul class="timeline">
+          <li>
+              <span class="dot"></span>
+              <div class="tl-body">
+                    <div class="tl-meta"><span class="pill">June 2025 – August 2025</span></div>
+                    <div class="tl-title"><strong>VIET NHAT SOLUTIONS</strong> - Software Engineer</div>
+                    <div class="tl-desc">
+                            .NET Core, C#, Entity Framework, Zalo OA OpenAPI, LINQ, Lambda Expressions, RabbitMQ, Zalo OA API, Docker, Linux, Nginx, RESTful APIs, WinForms, Blazor Web App, DevExpress,
+                        PostgreSQL, ...
+                    </div>
+              </div>
+          </li>
+      </ul>
+
+      <ul class="timeline">
+          <li>
+              <span class="dot"></span>
+              <div class="tl-body">
+                  <div class="tl-meta"><span class="pill">June 2024 – January 2025</span></div>
+                  <div class="tl-title"><strong>VIET NHAT SOLUTIONS</strong> - Software Engineer Intern</div>
+                        <div class="tl-desc"> .NET Core, C#, Entity Framework, LINQ, Lambda Expressions, Device SDKs, TCP/IP, DevExpress XAF (Blazor Server), EF Core, MS SQL/PostgreSQL, ...</div>
+              </div>
+          </li>
+      </ul>
+  </div>
+
+    <hr class="split"/>
+
+    <!-- Skills -->
+    <h3 class="section-title">MY SKILLS</h3>
+    <ul class="skills">
+      @foreach (var s in skills)
+      {
+        <li>
+          <div class="badge">
+            <img src="@s.icon" alt="@s.name" onerror="this.style.display='none'"/>
+          </div>
+          <div class="caption">@s.name</div>
+        </li>
+      }
+    </ul>
+
+    <div class="container-nextbtn">
+         <div class="hero__actions">
+             <NavLink href="/projects" class="cta">
+                 <span class="cta__icon" aria-hidden="true">
+                     <svg viewBox="0 0 24 24"><path d="M5 12h12m0 0-4-4m4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                 </span>
+                 <span>Next</span>
+             </NavLink>
+         </div>
+    </div>
+        
+
+  </div>
+</section>
+
+@code{
+  record Skill(string name, string icon, string shortName);
+    List<Skill> skills = new()
+{
+    new("ASP.NET Core",        "images/skills/dotnet.svg",      "NET"),
+    new("Blazor",      "images/skills/blazor.svg",      "Blz"),
+    new("DevExpress",      "images/skills/devexpress.png",      "devex"),
+
+    new("HTML",        "images/skills/html5.svg",       "HTML"),
+    new("CSS",         "images/skills/css3.svg",        "CSS"),
+    new("JavaScript",  "images/skills/javascript.svg",  "JS"),
+    new("TypeScript",  "images/skills/typescript.svg",  "TS"),
+
+    new("Java",        "images/skills/java.svg",        "Java"),
+    new("Spring Boot", "images/skills/spring.svg",      "Sp"),
+
+    new("MS SQL",  "images/skills/sqlserver.svg",   "MSSQL"),
+    new("PostgreSQL",  "images/skills/postgresql.svg",  "PG"),
+    new("MySQL",       "images/skills/mysql.svg",       "MySQL"),
+
+    new("RabbitMQ",    "images/skills/rabbitmq.svg",    "RMQ"),
+    new("Docker",      "images/skills/docker.svg",      "Dock"),
+    new("Git",         "images/skills/git.svg",         "Git")
+};
+}
+

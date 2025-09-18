@@ -1,0 +1,48 @@
+﻿
+<header class="glass-nav">
+    <div class="nav-container">
+        <!-- Burger (mobile) -->
+        <button class="burger"
+                aria-label="Toggle navigation"
+                aria-controls="site-nav"
+                aria-expanded="@menuOpen"
+                @onclick="ToggleMenu">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <!-- Nav links -->
+        <nav id="site-nav"
+             class="@($"links {(menuOpen ? "open" : "")}")"
+             role="navigation"
+             @onclick:stopPropagation="true">
+
+            <NavLink href="/" Match="NavLinkMatch.All"
+                     class="nav-link" ActiveClass="active"
+                     @onclick="CloseMenu">
+                <i class="bi bi-house-fill"></i><span>Home</span>
+            </NavLink>
+
+            <NavLink href="about"
+                     class="nav-link" ActiveClass="active"
+                     @onclick="CloseMenu">
+                <i class="bi bi-person-fill"></i><span>About</span>
+            </NavLink>
+
+            <NavLink href="projects"
+                     class="nav-link" ActiveClass="active"
+                     @onclick="CloseMenu">
+                <i class="bi bi-briefcase-fill"></i><span>Projects</span>
+            </NavLink>
+        </nav>
+    </div>
+    <!-- backdrop để bấm ra ngoài là đóng menu (chỉ hiện khi mở) -->
+    <div class="@($"nav-backdrop {(menuOpen ? "show" : "")}")"
+         @onclick="CloseMenu" aria-hidden="true"></div>
+</header>
+
+@code {
+    bool menuOpen;
+
+    void ToggleMenu() => menuOpen = !menuOpen;
+    void CloseMenu() => menuOpen = false;
+}
